@@ -74,7 +74,7 @@ public class Medico extends Usuario {
         return "Sin horario asignado";
     }
 
-    public void notificarCambioCita(String mensaje) {
+    public void notificarCambioCita(Paciente paciente1, String mensaje) {
         notificaciones.add("Cambio en cita: " + mensaje);
     }
 

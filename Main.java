@@ -12,12 +12,27 @@ public class Main {
         hospital.agregarMedico(medico1);
         hospital.agregarPaciente(paciente1);
 
+        medico1.agregarPaciente(paciente1);
+
         CitaMedica cita = new CitaMedica(LocalDateTime.now(), paciente1, medico1);
+
         paciente1.solicitarCita(cita);
+
+        paciente1.notificarCita("Su cita ha sido programada para " + cita.getFechaHora());
 
         medico1.registrarDiagnostico(paciente1, "Hipertensión controlada");
 
+        medico1.notificarCambioCita(paciente1, "Cambio de horario: ahora es a las 3:00 PM");
+
         System.out.println(cita.detallesCita());
-        System.out.println("Historial Médico de " + paciente1.nombre + ": " + paciente1.getHistorial().getAntecedentes());
+
+        System.out.println("Historial Médico de " + paciente1.getNombre() + ": " + paciente1.getHistorial().getAntecedentes());
+
+        System.out.println("Notificaciones de " + paciente1.getNombre() + ": " + paciente1.getNotificaciones());
+
+        System.out.println("\nResumen del hospital:");
+        System.out.println("Total de médicos: " + hospital.getMedicos().size());
+        System.out.println("Total de pacientes: " + hospital.getPacientes().size());
     }
 }
+
